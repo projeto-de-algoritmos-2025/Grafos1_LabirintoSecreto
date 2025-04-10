@@ -1,6 +1,7 @@
 import pygame
 import sys
 from pygame.locals import *
+from config import *
 import math 
 
 pygame.init()
@@ -9,22 +10,6 @@ pygame.init()
 width, height = 800, 600
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Labirinto Secreto")
-
-# --- Paleta Neon Futurista ---
-background_color = (10, 10, 30)       # fundo escuro
-title_color = (0, 255, 200)           # ciano neon
-button_color = (255, 0, 150)          # magenta neon
-button_hover = (255, 100, 200)        # hover mais claro
-text_color = (255, 255, 255)          # branco puro
-shadow_color = (50, 50, 50)           # sombra do título
-
-# --- Cores neon para elementos do jogo ---
-NEON_WALL = (255, 100, 0)         # laranja neon (paredes, buracos)
-NEON_PLAYER = (255, 255, 0)       # amarelo neon
-NEON_PATH = (255, 150, 50)        # laranja claro (caminho alternativo)
-NEON_GOAL = (0, 255, 0)           # verde neon (objetivo)
-NEON_TRAP = (255, 0, 100)         # vermelho neon (armadilha)
-NEON_PASSED_TRAP = (255, 0, 100)  # mesma cor, pode animar depois se quiser
 
 def main_menu():
     clock = pygame.time.Clock()
@@ -61,13 +46,19 @@ def main_menu():
 
         buttons = [
             {"rect": pygame.Rect(button_x, height / 3, button_width, button_height),
-            "text": "Jogar", "action": lambda: print("Jogar")},
+            "text": "Jogar",
+            "action": lambda: print("Jogar")
+            },
 
             {"rect": pygame.Rect(button_x, height / 3 + height * 0.15, button_width, button_height),
-            "text": "Máquina vs Máquina", "action": lambda: print("Máquina vs Máquina")},
+            "text": "Máquina vs Máquina", 
+            "action": lambda: print("Máquina vs Máquina")
+            },
 
             {"rect": pygame.Rect(button_x, height / 3 + height * 0.30, button_width, button_height),
-            "text": "Sair", "action": lambda: sys.exit()}
+            "text": "Sair", 
+            "action": lambda: sys.exit()
+            }
         ]
 
 
