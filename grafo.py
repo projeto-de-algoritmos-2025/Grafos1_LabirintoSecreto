@@ -1,5 +1,7 @@
 from collections import deque
 
+OBSTACLE = 7
+
 class Graph:
     def __init__(self, num_vertices):
         self.num_vertices = num_vertices
@@ -10,6 +12,14 @@ class Graph:
         self.adj_matrix[v1][v2] = 1
         self.adj_matrix[v2][v1] = 1
 
+    def remove_edge(self, v1, v2):
+        self.adj_matrix[v1][v2] = 0
+        self.adj_matrix[v2][v1] = 0
+
+    def remove_all_edges(self, v):
+        for i in range(self.num_vertices):
+            self.remove_edge(v, i)
+
     def clear_visited(self):
         self.visited = [False] * self.num_vertices
 
@@ -17,32 +27,18 @@ class Graph:
         rows, cols = len(matrix), len(matrix[0])
         for i in range(rows):
             for j in range(cols):
-                if matrix[i][j] != 7:  # 7 é obstáculo
-                    index = self.coordinates_to_index((i, j), cols)
-                    directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
-                    for dx, dy in directions:
+                if matrix[i][j] != OBSTACLE:
+                    current_index = self.coordinates_to_index((i, j), cols)
+                    for dx, dy in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
                         ni, nj = i + dx, j + dy
-                        if 0 <= ni < rows and 0 <= nj < cols and matrix[ni][nj] != 7:
+                        if 0 <= ni < rows and 0 <= nj < cols and matrix[ni][nj] != OBSTACLE:
                             neighbor_index = self.coordinates_to_index((ni, nj), cols)
-                            self.add_edge(index, neighbor_index)
-
-    def dfs(self, start, end):
-        self.visited[start] = True
-        if start == end:
-            return [start]
-        for v in range(self.num_vertices):
-            if self.adj_matrix[start][v] == 1 and not self.visited[v]:
-                path = self.dfs(v, end)
-                if path:
-                    return [start] + path
-        return None
+                            self.add_edge(current_index, neighbor_index)
 
     def bfs(self, start, end):
-        queue = deque()
-        queue.append(start)
+        queue = deque([start])
         visited = [False] * self.num_vertices
         prev = [None] * self.num_vertices
-
         visited[start] = True
 
         while queue:
@@ -50,7 +46,7 @@ class Graph:
             if current == end:
                 break
             for neighbor in range(self.num_vertices):
-                if self.adj_matrix[current][neighbor] == 1 and not visited[neighbor]:
+                if self.adj_matrix[current][neighbor] and not visited[neighbor]:
                     queue.append(neighbor)
                     visited[neighbor] = True
                     prev[neighbor] = current
@@ -62,74 +58,68 @@ class Graph:
             at = prev[at]
         path.reverse()
 
-        if path and path[0] == start:
-            return path
-        return None
+        return path if path and path[0] == start else None
+
+    def index_to_coordinates(self, index, cols):
+        return divmod(index, cols)
+    
+    def path_to_coordinates(self, path, cols):
+        return [self.index_to_coordinates(index, cols) for index in path]
 
     def coordinates_to_index(self, coordinates, cols):
         row, col = coordinates
         return row * cols + col
+    
+# Teste de uso
 
-    def index_to_coordinates(self, index, cols):
-        return divmod(index, cols)
+import time
+import os
 
-    def path_to_coordinates(self, path, cols):
-        return [self.index_to_coordinates(i, cols) for i in path]
+# Tamanho do tabuleiro
+rows, cols = 10, 10
+board = [[0 for _ in range(cols)] for _ in range(rows)]
 
-# Criação do tabuleiro
-def create_board(rows, cols):
-    board = []
+# Adiciona obstáculos invisíveis
+obstacles = [(3, 3), (3, 4), (4, 4), (5, 4), (6, 4)]
+for i, j in obstacles:
+    board[i][j] = 7  # invisível
+
+# Posição inicial e final
+start_pos = (9, 0)
+end_pos = (0, 9)
+
+# Inicializa o grafo e converte a matriz
+graph = Graph(rows * cols)
+graph.matrix_to_graph(board)
+
+# Converte posições para índices
+start_index = graph.coordinates_to_index(start_pos, cols)
+end_index = graph.coordinates_to_index(end_pos, cols)
+
+# Encontra o caminho
+path = graph.bfs(start_index, end_index)
+path_coords = graph.path_to_coordinates(path, cols) if path else []
+
+# Função para imprimir o tabuleiro com o personagem
+def print_board(board, char_pos):
+    os.system('cls' if os.name == 'nt' else 'clear')
     for i in range(rows):
-        row = []
         for j in range(cols):
-            if i < 2:  # linha de chegada
-                row.append(5)
-                if (i == 0 and j % 2 == 0) or (i == 1 and j % 2 != 0):
-                    row[j] = 3
-            elif i == rows - 1:  # linha de partida
-                row.append(6)
+            if (i, j) == char_pos:
+                print("P", end=" ")  # Personagem
+            elif (i, j) == end_pos:
+                print("X", end=" ")  # Destino
+            elif board[i][j] == 7:
+                print(".", end=" ")  # Obstáculo invisível
             else:
-                row.append(0)
-        board.append(row)
-    return board
+                print("_", end=" ")  # Espaço livre
+        print()
+    time.sleep(0.3)
 
-# Adiciona obstáculos no tabuleiro
-def add_obstacles(board, obstacle_coords):
-    for r, c in obstacle_coords:
-        board[r][c] = 7
-
-# Exibe o caminho no terminal
-def print_path(label, path, graph, cols):
-    if path:
-        coords = graph.path_to_coordinates(path, cols)
-        print(f"{label} Path (índices): {path}")
-        print(f"{label} Path (coordenadas): {coords}")
-    else:
-        print(f"{label} Path: Nenhum caminho encontrado.")
-
-# === Código principal de teste ===
-if __name__ == "__main__":
-    rows, cols = 15, 15
-    board = create_board(rows, cols)
-
-    # Obstáculos de exemplo
-    obstacles = [(10, 7), (11, 7), (12, 7), (13, 7), (9, 7), (9, 6)]
-    add_obstacles(board, obstacles)
-
-    graph = Graph(rows * cols)
-    graph.matrix_to_graph(board)
-
-    # Ponto inicial (linha de partida) e final (linha de chegada)
-    start_coord = (14, 0)
-    end_coord = (0, 2)
-    start_index = graph.coordinates_to_index(start_coord, cols)
-    end_index = graph.coordinates_to_index(end_coord, cols)
-
-    # Executa DFS
-    graph.clear_visited()
-    dfs_path = graph.dfs(start_index, end_index)
-    print_path("DFS", dfs_path, graph, cols)
-
-    # Executa BFS
-    bfs_path = graph.bfs(start_index, end_index)
-    print_path("BFS", bfs_path, graph, cols)
+# Animação da movimentação
+if path_coords:
+    for coord in path_coords:
+        print_board(board, coord)
+    print("Chegou ao destino!")
+else:
+    print("Caminho impossível!")
