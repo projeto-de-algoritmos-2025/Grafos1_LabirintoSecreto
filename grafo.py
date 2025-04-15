@@ -1,4 +1,5 @@
 from collections import deque
+import pygame
 
 OBSTACLE = 7
 
@@ -27,47 +28,24 @@ class Graph:
         rows, cols = len(matrix), len(matrix[0])
         for i in range(rows):
             for j in range(cols):
-                if matrix[i][j] != OBSTACLE:
-                    current_index = self.coordinates_to_index((i, j), cols)
-                    for dx, dy in [(1, 0), (0, 1), (-1, 0), (0, -1)]:
+                if matrix[i][j] != 7:
+                    index = self.coordinates_to_index((i, j), matrix)
+                    directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+                    for dx, dy in directions:
                         ni, nj = i + dx, j + dy
-                        if 0 <= ni < rows and 0 <= nj < cols and matrix[ni][nj] != OBSTACLE:
-                            neighbor_index = self.coordinates_to_index((ni, nj), cols)
-                            self.add_edge(current_index, neighbor_index)
+                        if 0 <= ni < rows and 0 <= nj < cols and matrix[ni][nj] != 7:
+                            neighbor_index = self.coordinates_to_index((ni, nj), matrix)
+                            self.add_edge(index, neighbor_index)
 
-    def bfs(self, start, end):
-        queue = deque([start])
-        visited = [False] * self.num_vertices
-        prev = [None] * self.num_vertices
-        visited[start] = True
-
-        while queue:
-            current = queue.popleft()
-            if current == end:
-                break
-            for neighbor in range(self.num_vertices):
-                if self.adj_matrix[current][neighbor] and not visited[neighbor]:
-                    queue.append(neighbor)
-                    visited[neighbor] = True
-                    prev[neighbor] = current
-
-        path = []
-        at = end
-        while at is not None:
-            path.append(at)
-            at = prev[at]
-        path.reverse()
-
-        return path if path and path[0] == start else None
-
-    def index_to_coordinates(self, index, cols):
+    def index_to_coordinates(self, index, matrix):
+        cols = len(matrix[0])
         return divmod(index, cols)
+
     
     def path_to_coordinates(self, path, cols):
         return [self.index_to_coordinates(index, cols) for index in path]
 
-    def coordinates_to_index(self, coordinates, cols):
+    def coordinates_to_index(self, coordinates, matrix):
         row, col = coordinates
-        return row * cols + col
+        return row * len(matrix[0]) + col
     
-

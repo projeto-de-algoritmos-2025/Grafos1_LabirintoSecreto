@@ -17,6 +17,14 @@ NEON_GOAL = (0, 255, 150)         # verde-água neon (objetivo)
 NEON_TRAP = (255, 0, 100)         # rosa choque neon (armadilha)
 NEON_PASSED_TRAP = (255, 200, 0)  # amarelo neon (armadilha passada)
 
+NEON_BACKGROUND = (0, 255, 200)        # Cor padrão do tabuleiro (cinza escuro)
+NEON_OBSTACLE = (255, 0, 100)          # Obstáculos (vermelho)
+NEON_START = (255, 200, 0)             # Início (verde)
+NEON_END = (255, 100, 200)               # Fim (azul)
+NEON_PLAYER = (255, 0, 150)            # Jogador (amarelo)
+NEON_VISITED = (255, 200, 0)        # Caminho percorrido (azul claro)
+
+
 # Configurações do tabuleiro
 rows = 15
 columns = 15
