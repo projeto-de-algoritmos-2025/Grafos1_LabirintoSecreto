@@ -37,19 +37,7 @@ Você pode:
   <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
 </p>
 
----
 
-## 🖼️ Screenshots
-
-<!-- Imagem redimensionada -->
-<p align="center">
-  <img src="https://github.com/projeto-de-algoritmos-2025/Grafos1_LabirintoSecreto/blob/main/assets/img/menu.png?raw=true" alt="Descrição da imagem" width="400"/>
-</p>
-
-<!-- Fonte com link -->
-<p align="center">
-  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
-</p>
 
 
 ## ⚙️ Instalação
