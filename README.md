@@ -27,7 +27,15 @@ Você pode:
 
 ## 🎥 Demonstração
 
-![Demonstração do Labirinto Secreto](video)
+<p align="center">
+  <a href="https://youtu.be/9HX3TL2cAvw">
+    <img src="https://img.youtube.com/vi/9HX3TL2cAvw/0.jpg" alt="Labirinto Secreto - Jogo Interativo com Algoritmos de Busca em Grafos" width="560" height="315"/>
+  </a>
+</p>
+
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
 
 ---
 
