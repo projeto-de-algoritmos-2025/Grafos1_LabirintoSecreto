@@ -1,31 +1,97 @@
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: Grafos 1<br>
-
-## Alunos
-|Matrícula | Aluno |
-| -- | -- |
-| 20/0060783  |  Ana Beatriz W. Massuh |
-| 21/1063194  |  Lucas Victor Ferreira de Araújo  |
-
-## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
-
-## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
-
-## Instalação 
-**Linguagem**: Python<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-
-## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
 
 
+# Labirinto Secreto
 
+**Número da Lista**: X  
+**Conteúdo da Disciplina**: Grafos 1  
+
+## 👨‍💻 Alunos
+| Matrícula | Aluno |
+| --------- | ------------------------------- |
+| 20/0060783 | Ana Beatriz W. Massuh |
+| 21/1063194 | Lucas Victor Ferreira de Araújo |
+
+---
+
+## 🧠 Sobre o Projeto
+
+**Labirinto Secreto** é um jogo interativo feito em Python com Pygame, desenvolvido para ilustrar o funcionamento de algoritmos de **busca em grafos** em um labirinto gerado dinamicamente.
+
+Você pode:
+- Jogar manualmente até encontrar a saída;
+- Assistir a busca automática usando **BFS (Busca em Largura)**;
+- Assistir a busca usando **DFS (Busca em Profundidade)**;
+- Visualizar os caminhos percorridos e o nó final da busca.
+
+---
+
+## 🎥 Demonstração
+
+![Demonstração do Labirinto Secreto](video)
+
+---
+
+## 🖼️ Screenshots
+
+
+
+## ⚙️ Instalação
+
+**Linguagem**: Python 
+**Biblioteca**: [Pygame](https://www.pygame.org/)  
+
+### 📦 Pré-requisitos
+
+Certifique-se de ter o Python 3 instalado. Em seguida, instale as dependências com:
+
+```bash
+pip install pygame
+```
+
+### 🔽 Clonando o Repositório
+
+```bash
+https://github.com/projeto-de-algoritmos-2025/Grafos1_LabirintoSecreto.git
+
+cd labirinto-secreto
+```
+
+---
+
+## ▶️ Como Usar
+
+Execute o projeto com:
+
+```bash
+python3 main.py
+```
+
+No menu principal, escolha:
+- **Jogar**: Controle manual até a saída;
+- **BFS**: Executar busca automática em largura;
+- **DFS**: Executar busca automática em profundidade;
+- **Sair**: Encerrar o jogo.
+
+---
+
+## 📁 Estrutura do Projeto
+
+```bash
+.
+├── busca.py         # Algoritmos de busca (BFS e DFS)
+├── grafo.py         # Estrutura do grafo e funções de manipulação
+├── config.py        # Cores, dimensões e constantes do jogo
+├── main.py          # Arquivo principal da aplicação
+├── assets/          # Imagens 
+└── README.md
+```
+
+---
+
+## ✨ Extras
+
+- O labirinto é gerado aleatoriamente a cada execução.
+- O jogador, algoritmos e armadilhas são representados visualmente.
+- Ideal para aprendizado interativo de grafos.
+- Interface retrô e minimalista.
 
