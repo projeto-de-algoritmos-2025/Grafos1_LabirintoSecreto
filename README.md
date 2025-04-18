@@ -45,14 +45,30 @@ O projeto utiliza três modos principais:
 ### Menu Principal
 ![Menu](assets/img/menu.png)
 
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
+
 ### Modo Jogador
 ![Player](assets/img/player.png)
+
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
 
 ### Modo BFS
 ![BFS](assets/img/BFS.png)
 
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
+
 ### Modo DFS
 ![DFS](assets/img/DFS.png)
+
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
 
 ## ⚙️ Instalação
 
@@ -125,6 +141,26 @@ python3 main.py
 ├── assets/          # Imagens 
 └── README.md
 ```
+
+---
+## 📽️ Vídeo de explicação
+
+<p align="center">
+  <a href="https://youtu.be/uX4nraFfYpI">🔗 Clique aqui para assistir ao vídeo no YouTube</a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/uX4nraFfYpI">
+    <img src="https://img.youtube.com/vi/uX4nraFfYpI/0.jpg" alt="Labirinto Secreto - Explicação do Projeto" width="560" height="315"/>
+  </a>
+</p>
+
+
+
+<p align="center">
+  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
+</p>
+
 
 ---
 
