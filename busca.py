@@ -1,6 +1,5 @@
 import pygame
 from collections import deque
-import random
 
 def bfs_visual(graph, start, end, draw_func):
     queue = deque()

@@ -62,19 +62,54 @@ def draw_search_step(current, visited, path, matrix, screen):
 
     pygame.display.update()
 
+def generate_solvable_maze(rows, cols, obstacle_prob=0.3):
+    # Inicializa o labirinto com paredes (7 = obstáculo)
+    maze = [[7 for _ in range(cols)] for _ in range(rows)]
+    
+    # Cria um caminho aleatório do início (0, 0) ao fim (rows-1, cols-1)
+    stack = [(0, 0)]
+    maze[0][0] = 0  # Início sempre livre
+    
+    while stack:
+        x, y = stack[-1]
+        neighbors = []
+        
+        # Verifica células vizinhas não visitadas
+        for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < rows and 0 <= ny < cols and maze[nx][ny] == 7:
+                neighbors.append((nx, ny))
+        
+        if neighbors:
+            nx, ny = random.choice(neighbors)
+            maze[nx][ny] = 0  # Abre caminho
+            stack.append((nx, ny))
+            
+            # Chegou ao fim? Interrompe
+            if (nx, ny) == (rows-1, cols-1):
+                break
+        else:
+            stack.pop()
+    
+    # Adiciona obstáculos aleatórios, exceto no caminho principal
+    for i in range(rows):
+        for j in range(cols):
+            if maze[i][j] == 7 and random.random() < obstacle_prob:
+                maze[i][j] = 7  # Mantém obstáculo
+            else:
+                maze[i][j] = 0  # Caminho livre
+    
+    return maze
+
 def run_maze_simulation(algorithm):
     # Configuração do labirinto
     maze_screen = pygame.display.set_mode((MAZE_WIDTH, MAZE_HEIGHT))
     pygame.display.set_caption(f"Labirinto - {algorithm}")
 
-    # Gera matriz do labirinto
-    board = [[0 for _ in range(COLS)] for _ in range(ROWS)]
-    for i in range(ROWS):
-        for j in range(COLS):
-            if random.random() < 0.3:
-                board[i][j] = 7
-    board[0][0] = 0
-    board[ROWS - 1][COLS - 1] = 0
+    # Gera um labirinto com caminho garantido
+    board = generate_solvable_maze(ROWS, COLS, obstacle_prob=0.3)
+    board[0][0] = 0  # Início livre
+    board[ROWS-1][COLS-1] = 0  # Fim livre
 
     # Cria grafo
     graph = Graph(ROWS * COLS)
