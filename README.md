@@ -1,8 +1,6 @@
-
-
 # Labirinto Secreto
 
-**Número da Lista**: X  
+**Número da Lista**: 1  
 **Conteúdo da Disciplina**: Grafos 1  
 
 ## 👨‍💻 Alunos
@@ -31,7 +29,6 @@ O projeto utiliza três modos principais:
 1. **Modo Automático**:
    - 🤖 Executa os algoritmos BFS ou DFS passo a passo
    - 🎨 Mostra visualmente as células visitadas e o caminho encontrado
-   - ⏱️ Controlável por delay ajustável
 
 2. **Modo Manual**:
    - 🕹️ Controle manual usando teclas direcionais
@@ -97,12 +94,10 @@ python3 main.py
 - **ESC**: Sai do jogo  
 
 #### Modo Jogador:
-- **↑ ↓ ← →**: Movimentação  
-- **R**: Reinicia o labirinto  
+- **↑ ↓ ← →**: Movimentação
 - **ESC**: Volta ao menu  
 
 #### Modos Automáticos (BFS/DFS):
-- **ESPAÇO**: Pausa/Continua a execução  
 - **ESC**: Interrompe e volta ao menu  
 
 ### 💡 Dicas
