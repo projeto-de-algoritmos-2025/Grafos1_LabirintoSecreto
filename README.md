@@ -13,45 +13,61 @@
 
 ---
 
-## 🧠 Sobre o Projeto
+## 🎮 Labirinto Secreto
 
-**Labirinto Secreto** é um jogo interativo feito em Python com Pygame, desenvolvido para ilustrar o funcionamento de algoritmos de **busca em grafos** em um labirinto gerado dinamicamente.
+Um projeto interativo que combina jogabilidade manual com visualização de algoritmos de busca em labirintos gerados proceduralmente.
 
-Você pode:
-- Jogar manualmente até encontrar a saída;
-- Assistir a busca automática usando **BFS (Busca em Largura)**;
-- Assistir a busca usando **DFS (Busca em Profundidade)**;
-- Visualizar os caminhos percorridos e o nó final da busca.
+## 📌 Sobre
 
----
+### Objetivos
+- 🧩 Demonstrar visualmente os algoritmos BFS (Busca em Largura) e DFS (Busca em Profundidade)
+- 🎯 Oferecer uma experiência de jogo manual desafiadora
+- 🔍 Garantir que todos os labirintos gerados tenham solução
+- 📊 Servir como ferramenta educacional para ensino de algoritmos
 
-## 🎥 Demonstração
+### Como Funciona
+O projeto utiliza três modos principais:
 
-<p align="center">
-  <a href="https://youtu.be/9HX3TL2cAvw">
-    <img src="https://img.youtube.com/vi/9HX3TL2cAvw/0.jpg" alt="Labirinto Secreto - Jogo Interativo com Algoritmos de Busca em Grafos" width="560" height="315"/>
-  </a>
-</p>
+1. **Modo Automático**:
+   - 🤖 Executa os algoritmos BFS ou DFS passo a passo
+   - 🎨 Mostra visualmente as células visitadas e o caminho encontrado
+   - ⏱️ Controlável por delay ajustável
 
-<p align="center">
-  <sub>Fonte: <a href="https://github.com/Lucas13032003">Lucas Víctor</a> e <a href="https://github.com/AnaBeatrizMassuh">Ana Beatriz W. Massuh</a>, 2025</sub>
-</p>
+2. **Modo Manual**:
+   - 🕹️ Controle manual usando teclas direcionais
+   - 🏁 Objetivo: alcançar a saída do labirinto
+   - ⚠️ Sistema de colisão com paredes
 
+3. **Geração de Labirintos**:
+   - 🏗️ Cria labirintos solucionáveis usando DFS modificado
+   - 🧱 Adiciona obstáculos aleatórios sem bloquear o caminho principal
+   - 🔄 Geração procedural a cada execução
 
+## 🖼️ Screenshots
 
+### Menu Principal
+![Menu](assets/img/menu.png)
+
+### Modo Jogador
+![Player](assets/img/player.png)
+
+### Modo BFS
+![BFS](assets/img/BFS.png)
+
+### Modo DFS
+![DFS](assets/img/DFS.png)
 
 ## ⚙️ Instalação
 
 **Linguagem**: Python 
-**Biblioteca**: [Pygame](https://www.pygame.org/)  
+**Biblioteca**: [Pygame](https://www.pygame.org/) 
 
 ### 📦 Pré-requisitos
+- Python 3.8+
+- Pygame 2.1.2+
+- Sistema com suporte a OpenGL 
 
-Certifique-se de ter o Python 3 instalado. Em seguida, instale as dependências com:
-
-```bash
-pip install pygame
-```
+### Passo a Passo
 
 ### 🔽 Clonando o Repositório
 
@@ -71,11 +87,35 @@ Execute o projeto com:
 python3 main.py
 ```
 
-No menu principal, escolha:
-- **Jogar**: Controle manual até a saída;
-- **BFS**: Executar busca automática em largura;
-- **DFS**: Executar busca automática em profundidade;
-- **Sair**: Encerrar o jogo.
+## 🕹️ Como Jogar
+
+### 🎮 Controles
+
+#### Menu Principal:
+- **↑/↓**: Navega entre opções  
+- **Enter**: Seleciona opção  
+- **ESC**: Sai do jogo  
+
+#### Modo Jogador:
+- **↑ ↓ ← →**: Movimentação  
+- **R**: Reinicia o labirinto  
+- **ESC**: Volta ao menu  
+
+#### Modos Automáticos (BFS/DFS):
+- **ESPAÇO**: Pausa/Continua a execução  
+- **ESC**: Interrompe e volta ao menu  
+
+### 💡 Dicas
+- **No modo BFS**: Observe a busca em "camadas" que se expandem igualmente em todas as direções  
+- **No modo DFS**: Veja como o algoritmo explora um ramo completamente antes de retroceder (backtracking)  
+- **No modo manual**: Tente memorizar partes do labirinto para criar um mapa mental  
+
+## 🧠 Algoritmos Implementados
+
+| Algoritmo | Complexidade | Melhor Caso de Uso | Padrão de Visualização |
+|-----------|--------------|--------------------|------------------------|
+| **BFS** (Busca em Largura) | O(V+E) | Encontrar caminho mais curto | Expansão radial uniforme |
+| **DFS** (Busca em Profundidade) | O(V+E) | Quando o espaço é limitado | Exploração em profundidade antes de retroceder |
 
 ---
 
